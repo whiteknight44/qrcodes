@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>QR Code Doctor Appointment Booking | Healthcare Solutions - QRBiz</title>
+    <meta name="description" content="Streamline healthcare with QR code appointment booking. Patients can book, reschedule, and manage appointments instantly. Professional healthcare solutions.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: #2563eb;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
+            background: linear-gradient(135deg, #4caf50 0%, #2196f3 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: white;
+            color: #4caf50;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background: #f8faff;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1rem;
+            background: linear-gradient(45deg, #4caf50, #2196f3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        /* Demo Section */
+        .demo {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .demo-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .demo-image {
+            background: linear-gradient(45deg, #4caf50, #2196f3);
+            border-radius: 20px;
+            padding: 2rem;
+            color: white;
+            text-align: center;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .qr-code {
+            width: 150px;
+            height: 150px;
+            background: white;
+            margin: 0 auto 1rem;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+            font-size: 2rem;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 80px 0;
+            background: #f8faff;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .pricing-card.popular {
+            border: 3px solid #4caf50;
+            transform: scale(1.05);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #4caf50;
+            color: white;
+            padding: 0.5rem 2rem;
+            border-radius: 25px;
+            font-weight: 600;
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #4caf50;
+            margin-bottom: 1rem;
+        }
+
+        .price-period {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .features-list {
+            list-style: none;
+            margin: 2rem 0;
+            text-align: left;
+        }
+
+        .features-list li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .features-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #4caf50;
+            font-weight: bold;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #f8faff;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #4caf50;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, #4caf50, #2196f3);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .demo-content {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">📱 QRBiz</a>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="salon.html">Salon Menu</a></li>
+                <li><a href="restaurant.html">Restaurant Menu</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>QR Code Doctor Appointments</h1>
+            <p>Streamline your healthcare practice with contactless appointment booking. Patients can schedule, reschedule, and manage appointments instantly with a simple QR code scan.</p>
+            <a href="#pricing" class="cta-button">Get Started Today</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Our Medical Booking System?</h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">👨‍⚕️</div>
+                    <h3>Multi-Doctor Support</h3>
+                    <p>Manage appointments for multiple doctors and specialists. Display doctor profiles, specializations, and available time slots in real-time.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📅</div>
+                    <h3>Smart Scheduling</h3>
+                    <p>Intelligent appointment scheduling with conflict prevention, buffer time management, and automatic slot optimization based on consultation types.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Contactless Booking</h3>
+                    <p>Patients can book appointments without touching surfaces or waiting in lines. Simply scan QR code and schedule from their phone.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔔</div>
+                    <h3>Smart Notifications</h3>
+                    <p>Automated SMS and email reminders for appointments, follow-ups, and prescription refills. Reduce no-shows by up to 70%.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📋</div>
+                    <h3>Patient Records</h3>
+                    <p>Integrated patient management system with medical history, previous appointments, and treatment records for better care continuity.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Analytics Dashboard</h3>
+                    <p>Track appointment patterns, doctor utilization, patient demographics, and revenue insights to optimize your practice operations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section class="demo">
+        <div class="container">
+            <div class="demo-content">
+                <div>
+                    <h2>How It Works</h2>
+                    <div style="margin: 2rem 0;">
+                        <h4>1. Scan QR Code</h4>
+                        <p>Patients scan the QR code displayed at your clinic entrance, reception, or waiting area using their smartphone camera.</p>
+                    </div>
+                    <div style="margin: 2rem 0;">
+                        <h4>2. Select Doctor & Service</h4>
+                        <p>Choose from available doctors, view their profiles and specializations, then select the type of consultation needed.</p>
+                    </div>
+                    <div style="margin: 2rem 0;">
+                        <h4>3. Pick Time Slot</h4>
+                        <p>View real-time availability and book the most convenient appointment slot. System prevents double bookings automatically.</p>
+                    </div>
+                    <div style="margin: 2rem 0;">
+                        <h4>4. Get Confirmation</h4>
+                        <p>Receive instant confirmation with appointment details, doctor information, and automated reminders before the visit.</p>
+                    </div>
+                </div>
+                <div class="demo-image">
+                    <div class="qr-code">🏥</div>
+                    <h3>Medical Booking Demo</h3>
+                    <p>Scan to see a live demo of our appointment booking system</p>
+                    <small>Try it now: Point your camera at this area</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="section-title">
+                <h2>Choose Your Plan</h2>
+                <p>Flexible pricing options for healthcare practices of all sizes</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Clinic</h3>
+                    <div class="price">₹3,999<span class="price-period">/month</span></div>
+                    <ul class="features-list">
+                        <li>Up to 3 doctors</li>
+                        <li>Basic appointment booking</li>
+                        <li>Patient notifications</li>
+                        <li>Calendar integration</li>
+                        <li>Basic reporting</li>
+                        <li>Email support</li>
+                        <li>Mobile responsive</li>
+                    </ul>
+                    <button class="submit-btn">Choose Clinic</button>
+                </div>
+                
+                <div class="pricing-card popular">
+                    <div class="popular-badge">Most Popular</div>
+                    <h3>Hospital</h3>
+                    <div class="price">₹6,999<span class="price-period">/month</span></div>
+                    <ul class="features-list">
+                        <li>Up to 15 doctors</li>
+                        <li>Advanced scheduling system</li>
+                        <li>Patient record management</li>
+                        <li>SMS & Email notifications</li>
+                        <li>Detailed analytics</li>
+                        <li>Department-wise booking</li>
+                        <li>Custom branding</li>
+                        <li>Priority support</li>
+                        <li>Integration with EMR systems</li>
+                    </ul>
+                    <button class="submit-btn">Choose Hospital</button>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3>Enterprise</h3>
+                    <div class="price">₹12,999<span class="price-period">/month</span></div>
+                    <ul class="features-list">
+                        <li>Unlimited doctors</li>
+                        <li>Multi-location support</li>
+                        <li>Advanced patient portal</li>
+                        <li>Telemedicine integration</li>
+                        <li>Insurance verification</li>
+                        <li>API access</li>
+                        <li>Custom workflows</li>
+                        <li>24/7 dedicated support</li>
+                        <li>HIPAA compliance</li>
+                        <li>White-label solution</li>
+                    </ul>
+                    <button class="submit-btn">Choose Enterprise</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="contact-form" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Ready to Modernize Your Practice?</h2>
+                <p>Get started with our QR code appointment booking system today</p>
+            </div>
+            <div class="form-container">
+                <form id="doctorForm">
+                    <div class="form-group">
+                        <label for="clinicName">Clinic/Hospital Name *</label>
+                        <input type="text" id="clinicName" name="clinicName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="doctorName">Head Doctor/Administrator *</label>
+                        <input type="text" id="doctorName" name="doctorName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Clinic Location</label>
+                        <input type="text" id="location" name="location" placeholder="City, State">
+                    </div>
+                    <div class="form-group">
+                        <label for="specialty">Primary Specialty</label>
+                        <select id="specialty" name="specialty">
+                            <option value="">Select specialty</option>
+                            <option value="general">General Practice</option>
+                            <option value="cardiology">Cardiology</option>
+                            <option value="dermatology">Dermatology</option>
+                            <option value="orthopedics">Orthopedics</option>
+                            <option value="pediatrics">Pediatrics</option>
+                            <option value="gynecology">Gynecology</option>
+                            <option value="neurology">Neurology</option>
+                            <option value="psychiatry">Psychiatry</option>
+                            <option value="ophthalmology">Ophthalmology</option>
+                            <option value="ent">ENT</option>
+                            <option value="multispecialty">Multi-specialty</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="doctors">Number of Doctors</label>
+                        <select id="doctors" name="doctors">
+                            <option value="">Select range</option>
+                            <option value="1-3">1-3 doctors</option>
+                            <option value="4-10">4-10 doctors</option>
+                            <option value="11-25">11-25 doctors</option>
+                            <option value="25+">25+ doctors</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="plan">Preferred Plan</label>
+                        <select id="plan" name="plan">
+                            <option value="">Select plan</option>
+                            <option value="clinic">Clinic - ₹3,999/month</option>
+                            <option value="hospital">Hospital - ₹6,999/month</option>
+                            <option value="enterprise">Enterprise - ₹12,999/month</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Special Requirements</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Tell us about your current booking system, integration needs, or any specific requirements..."></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Get Free Consultation</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Form submission
+        document.getElementById('doctorForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Create WhatsApp message
+            const message = `Hello! I'm interested in QR Code Doctor Appointment Booking system.
+            
+Medical Practice Details:
+- Clinic/Hospital: ${data.clinicName}
+- Head Doctor/Admin: ${data.doctorName}
+- Phone: ${data.phone}
+- Email: ${data.email}
+- Location: ${data.location}
+- Specialty: ${data.specialty}
+- Number of Doctors: ${data.doctors}
+- Preferred Plan: ${data.plan}
+- Requirements: ${data.message}
+
+Please contact me for more information and demo.`;
+
+            // Encode message for WhatsApp URL
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappURL = `https://wa.me/your-number?text=${encodedMessage}`;
+            
+            // Open WhatsApp
+            window.open(whatsappURL, '_blank');
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

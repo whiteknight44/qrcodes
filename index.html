@@ -1,436 +1,732 @@
 <!DOCTYPE html>
-
-<!--
- // WEBSITE: https://themefisher.com
- // TWITTER: https://twitter.com/themefisher
- // FACEBOOK: https://www.facebook.com/themefisher
- // GITHUB: https://github.com/themefisher/
--->
-
 <html lang="en">
+
 <head>
-
-  <!-- Basic Page Needs
-  ================================================== -->
   <meta charset="utf-8">
-  <title>Bingo | Responsive Multipurpose Parallax HTML5 Template</title>
-
-  <!-- Mobile Specific Metas
-  ================================================== -->
+  <title>QRBiz | Smart QR Code Business Solutions</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="description" content="One page parallax responsive HTML Template">
+  <meta name="description"
+    content="Professional QR code solutions for restaurants, salons, and healthcare - Digital menus, service catalogs, and appointment booking systems">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <meta name="author" content="Themefisher">
-  <meta name="generator" content="Themefisher Bingo HTML Template v1.0">
+  <meta name="author" content="QRBiz">
 
   <!-- Favicon -->
-  <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
+  <link rel="shortcut icon" type="image/x-icon"
+    href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNCIgZmlsbD0iIzI1NjNlYiIvPgo8cGF0aCBkPSJNOCA4aDN2M0g4VjhaTTEzIDhoM3YzaC0zVjhaTTggMTNoM3YzSDhWMTNaTTEzIDEzaDN2M2gtM1YxM1pNMTggOGgzdjNoLTNWOFpNMjMgOGgzdjNoLTNWOFpNMTggMTNoM3YzaC0zVjEzWk0yMyAxM2gzdjNoLTNWMTNaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K" />
 
-  <!-- CSS
-  ================================================== -->
-  <!-- Themefisher Icon font -->
-  <link rel="stylesheet" href="plugins/themefisher-font/style.css">
-  <!-- bootstrap.min css -->
-  <link rel="stylesheet" href="plugins/bootstrap/bootstrap.min.css">
-  <!-- Lightbox.min css -->
-  <link rel="stylesheet" href="plugins/lightbox2/css/lightbox.min.css">
-  <!-- animation css -->
-  <link rel="stylesheet" href="plugins/animate/animate.css">
-  <!-- Slick Carousel -->
-  <link rel="stylesheet" href="plugins/slick/slick.css">
-  <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="css/style.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    /* Navigation */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      padding: 1rem 0;
+      transition: all 0.3s ease;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .navbar.scrolled {
+      background: rgba(255, 255, 255, 0.98);
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #2563eb;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-menu a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+
+    .nav-menu a:hover {
+      color: #2563eb;
+    }
+
+    .nav-menu a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #2563eb;
+      transition: width 0.3s ease;
+    }
+
+    .nav-menu a:hover::after {
+      width: 100%;
+    }
+
+    .mobile-menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23ffffff" fill-opacity="0.1"><rect width="6" height="6"/><rect x="12" width="6" height="6"/><rect x="24" width="6" height="6"/><rect x="36" width="6" height="6"/><rect x="48" width="6" height="6"/><rect y="12" width="6" height="6"/><rect x="12" y="12" width="6" height="6"/><rect x="24" y="12" width="6" height="6"/><rect x="36" y="12" width="6" height="6"/><rect x="48" y="12" width="6" height="6"/></g></g></svg>') repeat;
+      opacity: 0.3;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      padding: 0 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      animation: fadeInUp 1s ease-out;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+      animation: fadeInUp 1s ease-out 0.2s both;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 1rem 2rem;
+      background: #fff;
+      color: #2563eb;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      animation: fadeInUp 1s ease-out 0.4s both;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Services Section */
+    .services {
+      padding: 6rem 0;
+      background: #f8faff;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-title h2 {
+      font-size: 2.5rem;
+      color: #333;
+      margin-bottom: 1rem;
+    }
+
+    .section-title p {
+      font-size: 1.1rem;
+      color: #666;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 4rem;
+    }
+
+    .service-card {
+      background: white;
+      padding: 2.5rem;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(45deg, #2563eb, #7c3aed);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .service-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+    }
+
+    .service-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 1.5rem;
+      background: linear-gradient(45deg, #2563eb, #7c3aed);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: white;
+    }
+
+    .service-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #333;
+    }
+
+    .service-card p {
+      color: #666;
+      line-height: 1.6;
+    }
+
+    /* About Section */
+    .about {
+      padding: 6rem 0;
+      background: white;
+    }
+
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-text h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      color: #333;
+    }
+
+    .about-text p {
+      font-size: 1.1rem;
+      color: #666;
+      margin-bottom: 2rem;
+      line-height: 1.7;
+    }
+
+    .features-list {
+      list-style: none;
+      margin-bottom: 2rem;
+    }
+
+    .features-list li {
+      padding: 0.5rem 0;
+      color: #666;
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    .features-list li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: #2563eb;
+      font-weight: bold;
+    }
+
+    .about-image {
+      position: relative;
+    }
+
+    .about-image img {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Stats Section */
+    .stats {
+      padding: 4rem 0;
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
+      color: white;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      text-align: center;
+    }
+
+    .stat-item h3 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
+
+    .stat-item p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      padding: 6rem 0;
+      background: #f8faff;
+      text-align: center;
+    }
+
+    .cta-section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #333;
+    }
+
+    .cta-section p {
+      font-size: 1.1rem;
+      color: #666;
+      margin-bottom: 2rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Footer */
+    .footer {
+      background: #1f2937;
+      color: white;
+      padding: 4rem 0 2rem;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-section h3 {
+      margin-bottom: 1rem;
+      color: #2563eb;
+    }
+
+    .footer-section p,
+    .footer-section a {
+      color: #d1d5db;
+      text-decoration: none;
+      line-height: 1.6;
+    }
+
+    .footer-section a:hover {
+      color: #2563eb;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #374151;
+      padding-top: 2rem;
+      text-align: center;
+      color: #9ca3af;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in {
+      animation: fadeInUp 0.6s ease-out;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .mobile-menu-toggle {
+        display: block;
+      }
+
+      .nav-menu {
+        display: none;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .about-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .section-title h2 {
+        font-size: 2rem;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Scroll animations */
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease-out;
+    }
+
+    .animate-on-scroll.animated {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
 </head>
-<body id="body">
 
-  <!--
-  Start Preloader
-  ==================================== -->
-  <div id="preloader">
-    <div class='preloader'>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-  </div>
-  <!--
-  End Preloader
-  ==================================== -->
-
-<!--
-Fixed Navigation
-==================================== -->
-<header class="navigation fixed-top">
-  <div class="container">
-    <!-- main nav -->
-    <nav class="navbar navbar-expand-lg navbar-light px-0">
-      <!-- logo -->
-      <a class="navbar-brand logo" href="index.html">
-        <img loading="lazy" class="logo-default" src="images/logo.png" alt="logo" />
-        <img loading="lazy" class="logo-white" src="images/logo-white.png" alt="logo" />
+<body>
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#" class="logo">
+        📱 QRBiz
       </a>
-      <!-- /logo -->
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
-        aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+      <ul class="nav-menu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="mobile-menu-toggle">☰</button>
+    </div>
+  </nav>
 
-      <div class="collapse navbar-collapse" id="navigation">
-        <ul class="navbar-nav ml-auto text-center">
-          <li class="nav-item dropdown active">
-            <a class="nav-link dropdown-toggle" href="#!" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Homepage <i class="tf-ion-chevron-down"></i>
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="index.html">Homepage</a></li>
-              <li><a class="dropdown-item" href="onepage-slider.html">Onepage</a></li>
-              <li><a class="dropdown-item" href="onepage-text.html">Onepage 2</a></li>
-									
-              <li class="dropdown dropdown-submenu dropright">
-                <a class="dropdown-item dropdown-toggle" href="#!" id="dropdown0501" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sub Menu  <i class="tf-ion-chevron-down"></i></a>
-      
-                <ul class="dropdown-menu" aria-labelledby="dropdown0501">
-                  <li><a class="dropdown-item" href="index.html">Submenu 01</a></li>
-                  <li><a class="dropdown-item" href="index.html">Submenu 02</a></li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="about.html">About Us</a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="service.html">Services</a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="portfolio.html">Portfolio</a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="team.html">Team</a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="pricing.html">Pricing</a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="contact.html">Contact</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#!" id="navbarDropdown02" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              Pages <i class="tf-ion-chevron-down"></i>
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown02">
-              <li><a class="dropdown-item" href="404.html">404 Page</a></li>
-              <li><a class="dropdown-item" href="blog.html">Blog Page</a></li>
-              <li><a class="dropdown-item" href="single-post.html">Blog Single Page</a></li>
-									
-              <li class="dropdown dropdown-submenu dropleft">
-                <a class="dropdown-item dropdown-toggle" href="#!" id="dropdown0201" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sub Menu  <i class="tf-ion-chevron-down"></i></a>
-      
-                <ul class="dropdown-menu" aria-labelledby="dropdown0201">
-                  <li><a class="dropdown-item" href="index.html">Submenu 01</a></li>
-                  <li><a class="dropdown-item" href="index.html">Submenu 02</a></li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-        </ul>
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1>Smart QR Code Solutions for Modern Businesses</h1>
+      <p>Transform your business with contactless digital menus, service catalogs, and appointment booking systems</p>
+      <a href="#services" class="cta-button">Explore Our Solutions</a>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-title animate-on-scroll">
+        <h2>Our QR Code Solutions</h2>
+        <p>Comprehensive digital solutions to modernize your business operations and enhance customer experience</p>
       </div>
-    </nav>
-    <!-- /main nav -->
-  </div>
-</header>
-<!--
-End Fixed Navigation
-==================================== -->
 
-<div class="hero-slider">
-	<div class="slider-item th-fullpage hero-area" style="background-image: url(images/slider/slider-bg-1.jpg);">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12 text-center">
-					<h1 data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".1"> We create  <br>
-						qr codes business solutions.  </h1>
-					<p data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".5"></p>
-					<a data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".8" class="btn btn-main"
-						href="service.html">Explore Us</a>
-				</div>
-			</div>
-		</div>
-	</div>
-	
-</div>
+      <div class="services-grid">
+        <a href="salon.html" class="service-card animate-on-scroll" style="text-decoration: none; color: inherit;">
+          <div class="service-icon">💇‍♀️</div>
+          <h3>QR Code Salon Menu</h3>
+          <p>Digitize your salon services with interactive QR menus. Customers can browse treatments, prices, and book
+            appointments instantly with a simple scan.</p>
+        </a>
 
-<!--
-Start About Section
-==================================== -->
-<section class="service-2 section">
-  <div class="container">
-    <div class="row justify-content-center">
 
-      <div class="col-lg-6">
-        <!-- section title -->
-        <div class="title text-center">
-          <h2>What Do We Offer</h2>
-          <p>  QR Code Solutions – Salon Menu, Salon Services, and Doctor Appointment Booking via QR Codes. </p>
-          <div class="border"></div>
-        </div>
-        <!-- /section title -->
+        <a href="restaurant.html" class="service-card animate-on-scroll" style="text-decoration: none; color: inherit;">
+          <div class="service-icon">🍽️</div>
+          <h3>QR Code Restaurant Menu</h3>
+          <p>Contactless dining experience with digital menus. Update prices and items in real-time, reduce printing
+            costs, and ensure hygiene standards.</p>
+          </a>
+
+        <a href="doctor.html" class="service-card animate-on-scroll" style="text-decoration: none; color: inherit;">
+          <div class="service-icon">🏥</div>
+          <h3>Doctor Appointment Booking</h3>
+          <p>Streamline healthcare access with QR-based appointment systems. Patients can book, reschedule, and manage
+            appointments effortlessly.</p>
+          </a>
       </div>
     </div>
-    <div class="row">
+  </section>
 
-      <div class="col-md-4 text-center d-none d-md-block">
-        <img loading="lazy" src="images/about/member.jpg" class="img-fluid inline-block" alt="">
-      </div>
-      <div class="col-md-8">
-        <div class="row text-center">
-          <div class="col-md-6 col-sm-6">
-            <div class="service-item">
-             <!-- <i class="tf-ion-ios-alarm-outline"></i> -->
-              <h4>       QR CODE SALON MENU     </h4>
-              <p>  Digitize Your Salon Menu for a Modern Customer Experience</p>
-            </div>
-          </div><!-- END COL -->
-          <div class="col-md-6 col-sm-6">
-            <div class="service-item">
-             <!-- <i class="tf-ion-ios-briefcase-outline"></i> -->
-              <h4>  QR CODE RESTAURANT MENU  </h4>
-              <p>    Upgrade Your Dining Experience with Contactless QR Menus</p>
-            </div>
-          </div><!-- END COL -->
-          <div class="col-md-6 col-sm-6">
-              <div class="service-item"> 
-              <!-- <i class="tf-ion-ios-email-outline"></i> -->
-              <h4> QR CODE doctor Appointment  </h4>
-              <p>  Smart Healthcare Access – Scan to Book Your Doctor Appointment"</p>
-            </div>
-          </div><!-- END COL -->
-         
-        </div>
-      </div>
-    </div> <!-- End row -->
-  </div> <!-- End container -->
-</section> <!-- End section -->
-
-<!--
-Start About Section
-==================================== -->
-<section class="about-2 section" id="about">
-	<div class="container">
-		<div class="row justify-content-center">
-			<!-- section title -->
-			<div class="col-lg-6">
-				<div class="title text-center">
-					<h2>We Are Best qr code agency in india  </h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam reprehenderit accusamus labore iusto,
-						aut, eum itaque illo totam tempora eius.</p>
-					<div class="border"></div>
-				</div>
-			</div>
-			<!-- /section title -->
-		</div>
-
-		<div class="row">
-
-			<div class="col-md-6 mb-4 mb-md-0">
-				<img loading="lazy" src="images/about/about-2.png" class="img-fluid" alt="">
-			</div>
-			<div class="col-md-6">
-				<ul class="checklist">
-					<li>Donec sed odio dui. Aenean eu leo quam. Pellentesque ornare sem laca quam venenatis vestibulum.</li>
-					<li>Aenean quam. Pellentesque ornare sem laca quam venenatis vestibulum.</li>
-					<li>Donec sed odio dui. Aenean eu leo quam. Pellentesque ornare sem laca quam venenatis vestibulum.</li>
-					<li>Etiam porta sem multipage evint landing magna mollis euismod a pharetra augue.</li>
-					<li>Aenean quam. Pellentesque ornare sem laca quam venenatis vestibulum.</li>
-				</ul>
-				<a href="about.html" class="btn btn-main mt-20">Learn More</a>
-			</div>
-		</div> <!-- End row -->
-	</div> <!-- End container -->
-</section> <!-- End section -->
-
-<!--
-Start Call To Action
-==================================== -->
-<section class="call-to-action section">
-	<div class="container">
-		<div class="row justify-content-center">
-			<div class="col-xl-6 col-lg-8 text-center">
-				<h2>Let's Create Something Together</h2>
-				<p> whatsup us your query. </p>
-				<a href="contact.html" class="btn btn-main">Contact Us</a>
-			</div>
-		</div> <!-- End row -->
-	</div> <!-- End container -->
-</section> <!-- End section -->
-
-<!--
-Start Counter Section
-==================================== -->
-<section class="counter-wrapper section-sm">
-	<div class="container">
-		<div class="row justify-content-center">
-			<div class="col-xl-6 col-lg-8 text-center">
-				<div class="title">
-					<h2>Award-Winning Agency</h2>
-					<p></p>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<!-- first count item -->
-			<div class="col-md-3 col-sm-6 col-xs-6 text-center ">
-				<div class="counters-item">
-					<i class="tf-ion-ios-alarm-outline"></i>
-					<div>
-						<span class="counter" data-count="150">0</span>
-					</div>
-					<h3>Happy Clients</h3>
-				</div>
-			</div>
-			<!-- end first count item -->
-
-			<!-- second count item -->
-			<div class="col-md-3 col-sm-6 col-xs-6 text-center ">
-				<div class="counters-item">
-					<i class="tf-ion-ios-analytics-outline"></i>
-					<div>
-						<span class="counter" data-count="130">0</span>
-					</div>
-					<h3>Projects completed</h3>
-				</div>
-			</div>
-			<!-- end second count item -->
-
-			<!-- third count item -->
-			<div class="col-md-3 col-sm-6 col-xs-6 text-center ">
-				<div class="counters-item">
-					<i class="tf-ion-ios-compose-outline"></i>
-					<div>
-						<span class="counter" data-count="99">0</span>
-					</div>
-					<h3>Positive feedback</h3>
-
-				</div>
-			</div>
-			<!-- end third count item -->
-
-			<!-- fourth count item -->
-			<div class="col-md-3 col-sm-6 col-xs-6 text-center ">
-				<div class="counters-item kill-border">
-					<i class="tf-ion-ios-bolt-outline"></i>
-					<div>
-						<span class="counter" data-count="250">0</span>
-					</div>
-					<h3>Cups of Coffee</h3>
-				</div>
-			</div>
-			<!-- end fourth count item -->
-		</div> <!-- end row -->
-	</div> <!-- end container -->
-</section> <!-- end section -->
-
-<!-- Start Testimonial
-=========================================== -->
-		
-
-
-<!--
-Start Blog Section
-=========================================== -->
-
-
-<footer id="footer" class="bg-one">
-  <div class="top-footer">
+  <!-- About Section -->
+  <section class="about" id="about">
     <div class="container">
-      <div class="row justify-content-around">
-        <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
-          <h3>about</h3>
-          <p>Integer posuere erat a ante venenati dapibus posuere velit aliquet. Fusce dapibus, tellus cursus commodo, tortor mauris sed posuere.</p>
-        </div>
-        <!-- End of .col-sm-3 -->
+      <div class="about-content">
+        <div class="about-text animate-on-scroll">
+          <h2>Leading QR Code Agency in India</h2>
+          <p>We specialize in creating innovative QR code solutions that bridge the gap between traditional business
+            operations and modern digital experiences. Our cutting-edge technology helps businesses across industries
+            enhance customer engagement and streamline operations.</p>
 
-        <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
-          <ul>
-            <li>
-              <h3>Our Services</h3>
-            </li>
-            <li><a href="service.html">Ui/Ux Design</a></li>
-            <li><a href="service.html">Graphic Design</a></li>
-            <li><a href="service.html">Web Design</a></li>
-            <li><a href="service.html">Web Development</a></li>
+          <ul class="features-list">
+            <li>Custom QR code solutions tailored to your business needs</li>
+            <li>Real-time analytics and customer insights</li>
+            <li>Mobile-responsive designs for all devices</li>
+            <li>Secure and reliable cloud-based infrastructure</li>
+            <li>24/7 technical support and maintenance</li>
           </ul>
-        </div>
-        <!-- End of .col-sm-3 -->
 
-        <div class="col-lg-2 col-md-6 mb-5 mb-md-0">
-          <ul>
-            <li>
-              <h3>Quick Links</h3>
-            </li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="service.html">Services</a></li>
-            <li><a href="blog.html">Blogs</a></li>
-            <li><a href="404.html">404</a></li>
-          </ul>
+          <a href="#contact" class="cta-button">Learn More</a>
         </div>
-        <!-- End of .col-sm-3 -->
 
-        <div class="col-lg-3 col-md-6">
-          <ul>
-            <li>
-              <h3>Connect with us Socially</h3>
-            </li>
-            <li><a href="https://www.facebook.com/themefisher/">Facebook</a></li>
-            <li><a href="https://www.twitter.com/themefisher/">Twitter</a></li>
-            <li><a href="https://www.youtube.com/channel/UCx9qVW8VF0LmTi4OF2F8YdA">Youtube</a></li>
-            <li><a href="https://www.github.com/themefisher/">Github</a></li>
-          </ul>
+        <div class="about-image animate-on-scroll">
+          <div
+            style="width: 100%; height: 400px; background: linear-gradient(45deg, #2563eb, #7c3aed); border-radius: 15px; display: flex; align-items: center; justify-content: center; color: white; font-size: 4rem;">
+            📱
+          </div>
         </div>
-        <!-- End of .col-sm-3 -->
-
       </div>
-    </div> <!-- end container -->
-  </div>
-  <div class="footer-bottom">
-    <h5>&copy; Copyright 2020. All rights reserved.</h5>
-    <h6>Design and Developed by <a href="https://themefisher.com/">Themefisher</a></h6>
-  </div>
-</footer> <!-- end footer -->
+    </div>
+  </section>
 
+  <!-- Stats Section -->
+  <section class="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item animate-on-scroll">
+          <h3 id="clients-count">500</h3>
+          <p>Happy Clients</p>
+        </div>
+        <div class="stat-item animate-on-scroll">
+          <h3 id="projects-count">1200</h3>
+          <p>QR Solutions Deployed</p>
+        </div>
+        <div class="stat-item animate-on-scroll">
+          <h3 id="feedback-count">98</h3>
+          <p>% Customer Satisfaction</p>
+        </div>
+        <div class="stat-item animate-on-scroll">
+          <h3 id="uptime-count">99.9</h3>
+          <p>% System Uptime</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<!-- end Footer Area
-========================================== -->
-<!-- 
-    Essential Scripts
-    =====================================-->
-<!-- Main jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
+  <!-- Call to Action Section -->
+  <section class="cta-section" id="contact">
+    <div class="container">
+      <div class="animate-on-scroll">
+        <h2>Ready to Transform Your Business?</h2>
+        <p>Get started with our QR code solutions today and provide your customers with a seamless digital experience
+        </p>
+        <a href="https://wa.me/your-number" class="cta-button">WhatsApp Us Your Query</a>
+      </div>
+    </div>
+  </section>
 
-<!-- Bootstrap4 -->
-<script src="plugins/bootstrap/bootstrap.min.js"></script>
-<!-- Parallax -->
-<script src="plugins/parallax/jquery.parallax-1.1.3.js"></script>
-<!-- lightbox -->
-<script src="plugins/lightbox2/js/lightbox.min.js"></script>
-<!-- Owl Carousel -->
-<script src="plugins/slick/slick.min.js"></script>
-<!-- filter -->
-<script src="plugins/filterizr/jquery.filterizr.min.js"></script>
-<!-- Smooth Scroll js -->
-<script src="plugins/smooth-scroll/smooth-scroll.min.js"></script>
-<!-- Google Map -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU"></script>
-<script src="plugins/google-map/gmap.js"></script>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>QRBiz</h3>
+          <p>Leading provider of QR code business solutions in India. We help businesses modernize their operations and
+            enhance customer experiences through innovative digital solutions.</p>
+        </div>
 
-<!-- Custom js -->
-<script src="js/script.js"></script>
+        <div class="footer-section">
+          <h3>Our Services</h3>
+          <ul class="footer-links">
+            <li><a href="#services">QR Code Salon Menus</a></li>
+            <li><a href="#services">Restaurant Digital Menus</a></li>
+            <li><a href="#services">Appointment Booking Systems</a></li>
+            <li><a href="#services">Custom QR Solutions</a></li>
+          </ul>
+        </div>
 
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3>Connect With Us</h3>
+          <ul class="footer-links">
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">LinkedIn</a></li>
+            <li><a href="#">WhatsApp</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2025 QRBiz. All rights reserved. | Innovative QR Solutions for Modern Businesses</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', function () {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Scroll animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function (entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animated');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.animate-on-scroll').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Counter animation
+    function animateCounter(element, target, duration) {
+      let start = 0;
+      const increment = target / (duration / 16);
+
+      function updateCounter() {
+        start += increment;
+        if (start < target) {
+          element.textContent = Math.floor(start);
+          requestAnimationFrame(updateCounter);
+        } else {
+          element.textContent = target;
+        }
+      }
+      updateCounter();
+    }
+
+    // Trigger counter animation when stats section is visible
+    const statsObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounter(document.getElementById('clients-count'), 500, 2000);
+          animateCounter(document.getElementById('projects-count'), 1200, 2000);
+          animateCounter(document.getElementById('feedback-count'), 98, 2000);
+          animateCounter(document.getElementById('uptime-count'), 99.9, 2000);
+          statsObserver.unobserve(entry.target);
+        }
+      });
+    });
+
+    const statsSection = document.querySelector('.stats');
+    if (statsSection) {
+      statsObserver.observe(statsSection);
+    }
+
+    // Mobile menu toggle (basic functionality)
+    document.querySelector('.mobile-menu-toggle').addEventListener('click', function () {
+      const navMenu = document.querySelector('.nav-menu');
+      navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+    });
+  </script>
 </body>
 
 </html>
