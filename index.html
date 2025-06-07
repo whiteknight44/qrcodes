@@ -466,6 +466,219 @@
       opacity: 1;
       transform: translateY(0);
     }
+
+    .contact-section {
+  padding: 6rem 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  text-align: center;
+}
+
+.contact-section .section-title h2 {
+  color: white;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.contact-section .section-title p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.contact-cta {
+  margin-top: 3rem;
+}
+
+.contact-btn {
+  background: white;
+  color: #2563eb;
+  border: none;
+  padding: 1.2rem 3rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.contact-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  background: #f8faff;
+}
+
+/* Popup Styles */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.popup-overlay.show {
+  display: flex;
+  opacity: 1;
+}
+
+.popup-form {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  max-width: 500px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.popup-overlay.show .popup-form {
+  transform: scale(1);
+}
+
+.popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.popup-header h3 {
+  color: #333;
+  font-size: 1.8rem;
+  margin: 0;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #666;
+  cursor: pointer;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.close-btn:hover {
+  background: #f0f0f0;
+  color: #333;
+}
+
+/* Form Styles */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 0.5rem;
+  color: #333;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 0.8rem 1rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.submit-btn {
+  background: linear-gradient(45deg, #25D366, #128C7E);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+  background: linear-gradient(45deg, #128C7E, #25D366);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .contact-section .section-title h2 {
+    font-size: 2rem;
+  }
+  
+  .contact-btn {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+  }
+  
+  .popup-form {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+  
+  .popup-header h3 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Loading state */
+.submit-btn.loading {
+  opacity: 0.7;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.submit-btn.loading::after {
+  content: "Sending...";
+}
   </style>
 </head>
 
@@ -481,6 +694,7 @@
         <li><a href="#services">Services</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
+        <li><a href="payment.html">Payment</a></li>
       </ul>
       <button class="mobile-menu-toggle">☰</button>
     </div>
@@ -517,14 +731,14 @@
           <h3>QR Code Restaurant Menu</h3>
           <p>Contactless dining experience with digital menus. Update prices and items in real-time, reduce printing
             costs, and ensure hygiene standards.</p>
-          </a>
+        </a>
 
         <a href="doctor.html" class="service-card animate-on-scroll" style="text-decoration: none; color: inherit;">
           <div class="service-icon">🏥</div>
           <h3>Doctor Appointment Booking</h3>
           <p>Streamline healthcare access with QR-based appointment systems. Patients can book, reschedule, and manage
             appointments effortlessly.</p>
-          </a>
+        </a>
       </div>
     </div>
   </section>
@@ -584,17 +798,74 @@
     </div>
   </section>
 
-  <!-- Call to Action Section -->
-  <section class="cta-section" id="contact">
-    <div class="container">
-      <div class="animate-on-scroll">
-        <h2>Ready to Transform Your Business?</h2>
-        <p>Get started with our QR code solutions today and provide your customers with a seamless digital experience
-        </p>
-        <a href="https://wa.me/your-number" class="cta-button">WhatsApp Us Your Query</a>
-      </div>
+  <!-- connect -->
+  <!-- Contact Section -->
+<section class="contact-section" id="contact">
+  <div class="container">
+    <div class="section-title animate-on-scroll">
+      <h2>Ready to Transform Your Business?</h2>
+      <p>Get in touch with us to discuss your QR code solution requirements</p>
     </div>
-  </section>
+    
+    <div class="contact-cta animate-on-scroll">
+      <button class="contact-btn" id="contactBtn">
+        📞 Contact Us Now
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Form Popup -->
+<div class="popup-overlay" id="popupOverlay">
+  <div class="popup-form">
+    <div class="popup-header">
+      <h3>Get Your QR Solution</h3>
+      <button class="close-btn" id="closeBtn">&times;</button>
+    </div>
+    
+    <form id="contactForm" class="contact-form">
+      <div class="form-group">
+        <label for="name">Full Name *</label>
+        <input type="text" id="name" name="name" required placeholder="Enter your full name">
+      </div>
+      
+      <div class="form-group">
+        <label for="mobile">Mobile Number *</label>
+        <input type="tel" id="mobile" name="mobile" required placeholder="Enter your mobile number" pattern="[0-9]{10}">
+      </div>
+      
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email (optional)">
+      </div>
+      
+      <div class="form-group">
+        <label for="service">Service Required *</label>
+        <select id="service" name="service" required>
+          <option value="">Select a service</option>
+          <option value="QR Code Salon Menu">QR Code Salon Menu</option>
+          <option value="QR Code Restaurant Menu">QR Code Restaurant Menu</option>
+          <option value="Doctor Appointment Booking">Doctor Appointment Booking</option>
+          <option value="Custom QR Solution">Custom QR Solution</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="businessName">Business Name</label>
+        <input type="text" id="businessName" name="businessName" placeholder="Enter your business name (optional)">
+      </div>
+      
+      <div class="form-group">
+        <label for="message">Additional Requirements</label>
+        <textarea id="message" name="message" rows="4" placeholder="Tell us more about your requirements (optional)"></textarea>
+      </div>
+      
+      <button type="submit" class="submit-btn">
+        📱 Send WhatsApp Message
+      </button>
+    </form>
+  </div>
+</div>
 
   <!-- Footer -->
   <footer class="footer">
@@ -726,6 +997,153 @@
       const navMenu = document.querySelector('.nav-menu');
       navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
     });
+
+    document.addEventListener('DOMContentLoaded', function() {
+    const contactBtn = document.getElementById('contactBtn');
+    const popupOverlay = document.getElementById('popupOverlay');
+    const closeBtn = document.getElementById('closeBtn');
+    const contactForm = document.getElementById('contactForm');
+    
+    // WhatsApp number - replace with actual number
+    const WHATSAPP_NUMBER = '7051189082'; // Replace this with actual WhatsApp number
+    
+    // Open popup
+    contactBtn.addEventListener('click', function() {
+        popupOverlay.classList.add('show');
+        document.body.style.overflow = 'hidden';
+    });
+    
+    // Close popup
+    function closePopup() {
+        popupOverlay.classList.remove('show');
+        document.body.style.overflow = 'auto';
+        contactForm.reset();
+    }
+    
+    closeBtn.addEventListener('click', closePopup);
+    
+    // Close popup when clicking outside
+    popupOverlay.addEventListener('click', function(e) {
+        if (e.target === popupOverlay) {
+            closePopup();
+        }
+    });
+    
+    // Close popup with Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && popupOverlay.classList.contains('show')) {
+            closePopup();
+        }
+    });
+    
+    // Form submission
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Get form data
+        const formData = new FormData(contactForm);
+        const data = {
+            name: formData.get('name').trim(),
+            mobile: formData.get('mobile').trim(),
+            email: formData.get('email').trim(),
+            service: formData.get('service'),
+            businessName: formData.get('businessName').trim(),
+            message: formData.get('message').trim()
+        };
+        
+        // Validation
+        if (!data.name || !data.mobile || !data.service) {
+            alert('Please fill in all required fields.');
+            return;
+        }
+        
+        // Mobile number validation
+        const mobileRegex = /^[0-9]{10}$/;
+        if (!mobileRegex.test(data.mobile)) {
+            alert('Please enter a valid 10-digit mobile number.');
+            return;
+        }
+        
+        // Create WhatsApp message
+        let message = `🚀 *NEW QR BUSINESS INQUIRY* 🚀\n`;
+        message += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
+        
+        message += `👋 Hello QRBiz Team!\n\n`;
+        message += `I'm interested in your QR code solutions. Here are my details:\n\n`;
+        
+        message += `📋 *CUSTOMER DETAILS:*\n`;
+        message += `• *Name:* ${data.name}\n`;
+        message += `• *Mobile:* +91 ${data.mobile}\n`;
+        
+        if (data.email) {
+            message += `• *Email:* ${data.email}\n`;
+        }
+        
+        if (data.businessName) {
+            message += `• *Business:* ${data.businessName}\n`;
+        }
+        
+        message += `\n🎯 *SERVICE REQUIRED:*\n`;
+        message += `• ${data.service}\n`;
+        
+        if (data.message) {
+            message += `\n💬 *ADDITIONAL REQUIREMENTS:*\n`;
+            message += `${data.message}\n`;
+        }
+        
+        message += `\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
+        message += `🌐 *Sent from QRBiz Website*\n`;
+        message += `⏰ ${new Date().toLocaleString('en-IN', {timeZone: 'Asia/Kolkata'})}\n`;
+        message += `\nPlease contact me to discuss further! 🙏`;
+        
+        // Show loading state
+        const submitBtn = contactForm.querySelector('.submit-btn');
+        const originalText = submitBtn.innerHTML;
+        submitBtn.classList.add('loading');
+        submitBtn.innerHTML = '📤 Sending...';
+        
+        // Simulate loading delay
+        setTimeout(() => {
+            // Create WhatsApp URL
+            const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+            
+            // Open WhatsApp
+            window.open(whatsappUrl, '_blank');
+            
+            // Reset form and close popup
+            submitBtn.classList.remove('loading');
+            submitBtn.innerHTML = originalText;
+            closePopup();
+            
+            // Show success message
+            setTimeout(() => {
+                alert('✅ Redirecting to WhatsApp! Your message is ready to send.');
+            }, 500);
+            
+        }, 1000);
+    });
+    
+    // Input formatting for mobile number
+    const mobileInput = document.getElementById('mobile');
+    mobileInput.addEventListener('input', function(e) {
+        // Remove any non-digit characters
+        let value = e.target.value.replace(/\D/g, '');
+        
+        // Limit to 10 digits
+        if (value.length > 10) {
+            value = value.substring(0, 10);
+        }
+        
+        e.target.value = value;
+    });
+    
+    // Prevent form submission on Enter key except for textarea
+    contactForm.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' && e.target.tagName !== 'TEXTAREA') {
+            e.preventDefault();
+        }
+    });
+});
   </script>
 </body>
 

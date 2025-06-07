@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <title>QR Code Restaurant Menu | Digital Menu Solutions - QRBiz</title>
-    <meta name="description" content="Transform your restaurant with contactless QR code menus. Showcase dishes, prices, and enable instant ordering. Professional restaurant menu solutions.">
+    <meta name="description"
+        content="Transform your restaurant with contactless QR code menus. Showcase dishes, prices, and enable instant ordering. Professional restaurant menu solutions.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <style>
         * {
             margin: 0;
@@ -197,6 +199,138 @@
             font-size: 2rem;
         }
 
+        /* Improved Recent Projects Section */
+        .recent-projects-showcase {
+    padding: 100px 0;
+    background: linear-gradient(135deg, #f8faff 0%, #fff 100%);
+    border-top: 1px solid #e5e7eb;
+}
+
+.recent-projects-showcase .section-title {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.recent-projects-showcase .section-title h2 {
+    font-size: 2.8rem;
+    color: #333;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    background: linear-gradient(45deg, #ff6b6b, #ffa500);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.recent-projects-showcase .section-title p {
+    color: #666;
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.projects-showcase-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.project-showcase-card {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease;
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-showcase-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 107, 107, 0.1), transparent);
+    transition: left 0.5s;
+}
+
+.project-showcase-card:hover::before {
+    left: 100%;
+}
+
+.project-showcase-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 60px rgba(255, 107, 107, 0.2);
+    border-color: #ff6b6b;
+}
+
+.project-qr {
+    width: 180px;
+    height: 180px;
+    margin: 0 auto 2rem;
+    background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    border: 3px solid #e9ecef;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.project-showcase-card:hover .project-qr {
+    border-color: #ff6b6b;
+    transform: scale(1.05);
+}
+
+.project-qr img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* ✅ Fix applied here */
+    border-radius: 17px;
+    transition: transform 0.3s ease;
+}
+
+.project-showcase-card:hover .project-qr img {
+    transform: scale(1.1);
+}
+
+.qr-placeholder {
+    display: none;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: #ccc;
+    background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+}
+
+.project-showcase-card h4 {
+    font-size: 1.4rem;
+    color: #333;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    position: relative;
+    z-index: 1;
+}
+
+.project-showcase-card p {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.6;
+    position: relative;
+    z-index: 1;
+}
+
+
         /* Pricing Section */
         .pricing {
             padding: 80px 0;
@@ -347,9 +481,48 @@
             .nav-menu {
                 display: none;
             }
+
+            .recent-projects-showcase {
+                padding: 60px 0;
+            }
+
+            .projects-showcase-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .project-showcase-card {
+                padding: 2rem;
+            }
+
+            .project-qr {
+                width: 150px;
+                height: 150px;
+            }
+
+            .recent-projects-showcase .section-title h2 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .projects-showcase-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .project-qr {
+                width: 120px;
+                height: 120px;
+            }
+
+            .project-showcase-card {
+                padding: 1.5rem;
+            }
         }
     </style>
 </head>
+
 <body>
     <!-- Navigation -->
     <nav class="navbar">
@@ -368,7 +541,8 @@
     <section class="hero">
         <div class="container">
             <h1>QR Code Restaurant Menu</h1>
-            <p>Transform your restaurant with contactless digital menus. Let customers browse dishes, check prices, and place orders instantly with a simple QR code scan.</p>
+            <p>Transform your restaurant with contactless digital menus. Let customers browse dishes, check prices, and
+                place orders instantly with a simple QR code scan.</p>
             <a href="#pricing" class="cta-button">Get Started Today</a>
         </div>
     </section>
@@ -383,32 +557,38 @@
                 <div class="feature-card">
                     <div class="feature-icon">🍽️</div>
                     <h3>Complete Digital Menu</h3>
-                    <p>Display all your dishes with mouth-watering images, detailed descriptions, ingredients, and pricing. Organize by categories like appetizers, mains, desserts, and beverages.</p>
+                    <p>Display all your dishes with mouth-watering images, detailed descriptions, ingredients, and
+                        pricing. Organize by categories like appetizers, mains, desserts, and beverages.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🛒</div>
                     <h3>Instant Ordering</h3>
-                    <p>Customers can add items to cart, customize orders, and place orders directly from their phones without waiting for a server.</p>
+                    <p>Customers can add items to cart, customize orders, and place orders directly from their phones
+                        without waiting for a server.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">💰</div>
                     <h3>Dynamic Pricing</h3>
-                    <p>Update prices instantly across all locations. Show daily specials, happy hour discounts, and combo deals in real-time.</p>
+                    <p>Update prices instantly across all locations. Show daily specials, happy hour discounts, and
+                        combo deals in real-time.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🖼️</div>
                     <h3>Visual Food Gallery</h3>
-                    <p>Showcase high-quality food images, chef specials, and seasonal dishes to entice customers and increase order values.</p>
+                    <p>Showcase high-quality food images, chef specials, and seasonal dishes to entice customers and
+                        increase order values.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">⭐</div>
                     <h3>Reviews & Ratings</h3>
-                    <p>Display customer reviews and dish ratings to build trust and help diners choose popular items and new favorites.</p>
+                    <p>Display customer reviews and dish ratings to build trust and help diners choose popular items and
+                        new favorites.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">📊</div>
                     <h3>Sales Analytics</h3>
-                    <p>Track popular dishes, peak ordering times, customer preferences, and revenue patterns to optimize your menu and operations.</p>
+                    <p>Track popular dishes, peak ordering times, customer preferences, and revenue patterns to optimize
+                        your menu and operations.</p>
                 </div>
             </div>
         </div>
@@ -447,184 +627,43 @@
         </div>
     </section>
 
-    <!-- Pricing Section -->
-    <section class="pricing" id="pricing">
+    <!-- Improved Recent Projects Section -->
+    <section class="recent-projects-showcase">
         <div class="container">
             <div class="section-title">
-                <h2>Choose Your Plan</h2>
-                <p>Flexible pricing options for restaurants of all sizes</p>
+                <h2>Recent Projects</h2>
             </div>
-            <div class="pricing-grid">
-                <div class="pricing-card">
-                    <h3>Starter</h3>
-                    <div class="price">₹3,999<span class="price-period">/month</span></div>
-                    <ul class="features-list">
-                        <li>Up to 100 menu items</li>
-                        <li>Basic QR menu</li>
-                        <li>Online ordering system</li>
-                        <li>Order notifications</li>
-                        <li>Basic analytics</li>
-                        <li>Mobile responsive design</li>
-                        <li>Payment integration</li>
-                    </ul>
-                    <button class="submit-btn">Choose Starter</button>
+            <div class="projects-showcase-grid">
+                <div class="project-showcase-card">
+                    <div class="project-qr">
+                        <img src="images/restaurant/1.jpg" alt="Pick Food Store QR Menu"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="qr-placeholder">🍽️</div>
+                    </div>
+                    <h4>Pick Food Store Menu</h4>
                 </div>
-                
-                <div class="pricing-card popular">
-                    <div class="popular-badge">Most Popular</div>
-                    <h3>Professional</h3>
-                    <div class="price">₹6,999<span class="price-period">/month</span></div>
-                    <ul class="features-list">
-                        <li>Unlimited menu items</li>
-                        <li>Advanced QR menu with gallery</li>
-                        <li>Multi-category organization</li>
-                        <li>Kitchen display system</li>
-                        <li>Advanced analytics</li>
-                        <li>Customer feedback system</li>
-                        <li>Custom branding</li>
-                        <li>Inventory management</li>
-                        <li>Multiple payment options</li>
-                    </ul>
-                    <button class="submit-btn">Choose Professional</button>
+
+                <div class="project-showcase-card">
+                    <div class="project-qr">
+                        <img src="images/restaurant/2.jpg" alt="Chef Grill QR Menu"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="qr-placeholder">🔥</div>
+                    </div>
+                    <h4>Chef Grill Menu</h4>
                 </div>
-                
-                <div class="pricing-card">
-                    <h3>Enterprise</h3>
-                    <div class="price">₹9,999<span class="price-period">/month</span></div>
-                    <ul class="features-list">
-                        <li>Everything in Professional</li>
-                        <li>Multi-location support</li>
-                        <li>Staff management system</li>
-                        <li>Advanced inventory tracking</li>
-                        <li>POS system integration</li>
-                        <li>API access</li>
-                        <li>Priority support</li>
-                        <li>Custom features</li>
-                        <li>White-label solution</li>
-                    </ul>
-                    <button class="submit-btn">Choose Enterprise</button>
+
+                <div class="project-showcase-card">
+                    <div class="project-qr">
+                        <img src="images/restaurant/3.jpg" alt="Vijay Di Hatti QR Menu"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="qr-placeholder">🍛</div>
+                    </div>
+                    <h4>Vijay Di Hatti Menu</h4>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Form -->
-    <section class="contact-form" id="contact">
-        <div class="container">
-            <div class="section-title">
-                <h2>Ready to Digitize Your Restaurant?</h2>
-                <p>Get started with our QR code restaurant menu solution today</p>
-            </div>
-            <div class="form-container">
-                <form id="restaurantForm">
-                    <div class="form-group">
-                        <label for="restaurantName">Restaurant Name *</label>
-                        <input type="text" id="restaurantName" name="restaurantName" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="ownerName">Owner/Manager Name *</label>
-                        <input type="text" id="ownerName" name="ownerName" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Phone Number *</label>
-                        <input type="tel" id="phone" name="phone" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email Address *</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="location">Restaurant Location</label>
-                        <input type="text" id="location" name="location" placeholder="City, State">
-                    </div>
-                    <div class="form-group">
-                        <label for="cuisine">Cuisine Type</label>
-                        <select id="cuisine" name="cuisine">
-                            <option value="">Select cuisine type</option>
-                            <option value="indian">Indian</option>
-                            <option value="chinese">Chinese</option>
-                            <option value="italian">Italian</option>
-                            <option value="continental">Continental</option>
-                            <option value="fast-food">Fast Food</option>
-                            <option value="multi-cuisine">Multi-Cuisine</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="menuItems">Number of Menu Items</label>
-                        <select id="menuItems" name="menuItems">
-                            <option value="">Select range</option>
-                            <option value="1-50">1-50 items</option>
-                            <option value="51-100">51-100 items</option>
-                            <option value="101-200">101-200 items</option>
-                            <option value="200+">200+ items</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="plan">Preferred Plan</label>
-                        <select id="plan" name="plan">
-                            <option value="">Select plan</option>
-                            <option value="starter">Starter - ₹3,999/month</option>
-                            <option value="professional">Professional - ₹6,999/month</option>
-                            <option value="enterprise">Enterprise - ₹9,999/month</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Special Requirements</label>
-                        <textarea id="message" name="message" rows="4" placeholder="Tell us about any specific features you need..."></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn">Get Free Consultation</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <script>
-        // Form submission
-        document.getElementById('restaurantForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData);
-            
-            // Create WhatsApp message
-            const message = `Hello! I'm interested in QR Code Restaurant Menu solution.
-            
-Restaurant Details:
-- Restaurant Name: ${data.restaurantName}
-- Owner/Manager: ${data.ownerName}
-- Phone: ${data.phone}
-- Email: ${data.email}
-- Location: ${data.location}
-- Cuisine Type: ${data.cuisine}
-- Menu Items: ${data.menuItems}
-- Preferred Plan: ${data.plan}
-- Requirements: ${data.message}
-
-Please contact me for more information.`;
-
-            // Encode message for WhatsApp URL
-            const encodedMessage = encodeURIComponent(message);
-            const whatsappURL = `https://wa.me/your-number?text=${encodedMessage}`;
-            
-            // Open WhatsApp
-            window.open(whatsappURL, '_blank');
-        });
-
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-    </script>
 </body>
+
 </html>

@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <title>QR Code Salon Menu | Digital Service Catalog - QRBiz</title>
-    <meta name="description" content="Transform your salon with digital QR code menus. Showcase services, prices, and enable instant booking. Professional salon menu solutions.">
+    <meta name="description"
+        content="Transform your salon with digital QR code menus. Showcase services, prices, and enable instant booking. Professional salon menu solutions.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <style>
         * {
             margin: 0;
@@ -197,6 +199,140 @@
             font-size: 2rem;
         }
 
+        /* Improved Recent Projects Section */
+        .recent-projects-showcase {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f8faff 0%, #fff 100%);
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .recent-projects-showcase .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .recent-projects-showcase .section-title h2 {
+            font-size: 2.8rem;
+            color: #333;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #ff6b6b, #ffa500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .recent-projects-showcase .section-title p {
+            color: #666;
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .projects-showcase-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .project-showcase-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-showcase-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 107, 107, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .project-showcase-card:hover::before {
+            left: 100%;
+        }
+
+        .project-showcase-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(255, 107, 107, 0.2);
+            border-color: #ff6b6b;
+        }
+
+        .project-qr {
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 2rem;
+            background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            border: 3px solid #e9ecef;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .project-showcase-card:hover .project-qr {
+            border-color: #ff6b6b;
+            transform: scale(1.05);
+        }
+
+        .project-qr img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            /* ✅ Fix applied here */
+            border-radius: 17px;
+            transition: transform 0.3s ease;
+        }
+
+        .project-showcase-card:hover .project-qr img {
+            transform: scale(1.1);
+        }
+
+        .qr-placeholder {
+            display: none;
+            width: 100%;
+            height: 100%;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #ccc;
+            background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+        }
+
+        .project-showcase-card h4 {
+            font-size: 1.4rem;
+            color: #333;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-showcase-card p {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+        }
+
+
+
         /* Pricing Section */
         .pricing {
             padding: 80px 0;
@@ -350,6 +486,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Navigation -->
     <nav class="navbar">
@@ -368,7 +505,8 @@
     <section class="hero">
         <div class="container">
             <h1>QR Code Salon Menu</h1>
-            <p>Transform your salon with digital service catalogs. Let customers browse treatments, check prices, and book appointments instantly with a simple QR code scan.</p>
+            <p>Transform your salon with digital service catalogs. Let customers browse treatments, check prices, and
+                book appointments instantly with a simple QR code scan.</p>
             <a href="#pricing" class="cta-button">Get Started Today</a>
         </div>
     </section>
@@ -383,32 +521,38 @@
                 <div class="feature-card">
                     <div class="feature-icon">💇‍♀️</div>
                     <h3>Complete Service Catalog</h3>
-                    <p>Display all your salon services including haircuts, coloring, treatments, nail services, and spa packages with detailed descriptions and pricing.</p>
+                    <p>Display all your salon services including haircuts, coloring, treatments, nail services, and spa
+                        packages with detailed descriptions and pricing.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">📱</div>
                     <h3>Instant Booking</h3>
-                    <p>Customers can book appointments directly from the menu, select preferred stylists, and choose convenient time slots without calling.</p>
+                    <p>Customers can book appointments directly from the menu, select preferred stylists, and choose
+                        convenient time slots without calling.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">💰</div>
                     <h3>Dynamic Pricing</h3>
-                    <p>Update prices instantly across all locations. Show special offers, seasonal discounts, and package deals in real-time.</p>
+                    <p>Update prices instantly across all locations. Show special offers, seasonal discounts, and
+                        package deals in real-time.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🖼️</div>
                     <h3>Visual Gallery</h3>
-                    <p>Showcase before/after photos, stylist portfolios, and treatment results to help customers make informed decisions.</p>
+                    <p>Showcase before/after photos, stylist portfolios, and treatment results to help customers make
+                        informed decisions.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">⭐</div>
                     <h3>Reviews & Ratings</h3>
-                    <p>Display customer reviews and stylist ratings to build trust and help clients choose the right services and professionals.</p>
+                    <p>Display customer reviews and stylist ratings to build trust and help clients choose the right
+                        services and professionals.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">📊</div>
                     <h3>Analytics Dashboard</h3>
-                    <p>Track popular services, peak hours, customer preferences, and booking patterns to optimize your business operations.</p>
+                    <p>Track popular services, peak hours, customer preferences, and booking patterns to optimize your
+                        business operations.</p>
                 </div>
             </div>
         </div>
@@ -426,15 +570,18 @@
                     </div>
                     <div style="margin: 2rem 0;">
                         <h4>2. Browse Services</h4>
-                        <p>They instantly access your complete service menu with prices, descriptions, and stylist information.</p>
+                        <p>They instantly access your complete service menu with prices, descriptions, and stylist
+                            information.</p>
                     </div>
                     <div style="margin: 2rem 0;">
                         <h4>3. Book Appointment</h4>
-                        <p>Select services, choose preferred stylist, pick time slot, and confirm booking - all in seconds!</p>
+                        <p>Select services, choose preferred stylist, pick time slot, and confirm booking - all in
+                            seconds!</p>
                     </div>
                     <div style="margin: 2rem 0;">
                         <h4>4. Get Confirmation</h4>
-                        <p>Receive instant booking confirmation with appointment details and salon contact information.</p>
+                        <p>Receive instant booking confirmation with appointment details and salon contact information.
+                        </p>
                     </div>
                 </div>
                 <div class="demo-image">
@@ -447,8 +594,54 @@
         </div>
     </section>
 
+    <!-- Improved Recent Projects Section -->
+    <section class="recent-projects-showcase">
+        <div class="container">
+            <div class="section-title">
+                <h2>Recent Projects</h2>
+            </div>
+            <div class="projects-showcase-grid">
+                <div class="project-showcase-card">
+                    <div class="project-qr">
+                        <img src="images/salon/1.jpg" alt="Pick Food Store QR Menu"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="qr-placeholder">🍽️</div>
+                    </div>
+                    <h4>Planet Beauty Menu</h4>
+                </div>
+
+                <div class="project-showcase-card">
+                    <div class="project-qr">
+                        <img src="images/salon/2.jpg" alt="Chef Grill QR Menu"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="qr-placeholder">🔥</div>
+                    </div>
+                    <h4>Osis Salon Menu</h4>
+                </div>
+
+                <div class="project-showcase-card">
+                    <div class="project-qr">
+                        <img src="images/salon/3.jpg" alt="Vijay Di Hatti QR Menu"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="qr-placeholder">🍛</div>
+                    </div>
+                    <h4>Glam Box Menu</h4>
+                </div>
+
+                <div class="project-showcase-card">
+                    <div class="project-qr">
+                        <img src="images/salon/4.jpg" alt="Vijay Di Hatti QR Menu"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="qr-placeholder">🍛</div>
+                    </div>
+                    <h4>Glam Box Menu</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Pricing Section -->
-    <section class="pricing" id="pricing">
+    <!-- <section class="pricing" id="pricing">
         <div class="container">
             <div class="section-title">
                 <h2>Choose Your Plan</h2>
@@ -503,10 +696,10 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- Contact Form -->
-    <section class="contact-form" id="contact">
+    <!-- <section class="contact-form" id="contact">
         <div class="container">
             <div class="section-title">
                 <h2>Ready to Digitize Your Salon?</h2>
@@ -563,8 +756,8 @@
         </div>
     </section>
 
-    <script>
-        // Form submission
+    <script> -->
+    <!-- // Form submission
         document.getElementById('salonForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -608,6 +801,7 @@ Please contact me for more information.`;
                 }
             });
         });
-    </script>
+    </script> -->
 </body>
+
 </html>

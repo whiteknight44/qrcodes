@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Payment | QRBiz - Smart QR Code Business Solutions</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Make secure payments for QRBiz services using UPI, GPay, PhonePe, Paytm">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="author" content="QRBiz">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon"
+        href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNCIgZmlsbD0iIzI1NjNlYiIvPgo8cGF0aCBkPSJNOCA4aDN2M0g4VjhaTTEzIDhoM3YzaC0zVjhaTTggMTNoM3YzSDhWMTNaTTEzIDEzaDN2M2gtM1YxM1pNMTggOGgzdjNoLTNWOFpNMjMgOGgzdjNoLTNWOFpNMTggMTNoM3YzaC0zVjEzWk0yMyAxM2gzdjNoLTNWMTNaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #2563eb;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .back-btn {
+            background: #2563eb;
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .back-btn:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+
+        /* Main Content */
+        .payment-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .payment-card {
+            background: white;
+            border-radius: 25px;
+            padding: 3rem;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            animation: slideUp 0.6s ease-out;
+        }
+
+        .payment-header {
+            margin-bottom: 2rem;
+        }
+
+        .payment-header h1 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .payment-header p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .security-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #e7f3ff;
+            color: #0066cc;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+
+        .qr-section {
+            margin: 2rem 0;
+        }
+
+        .qr-container {
+            position: relative;
+            display: inline-block;
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 3px dashed #e0e0e0;
+            transition: all 0.3s ease;
+        }
+
+        .qr-container:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .qr-placeholder {
+            width: 250px;
+            height: 250px;
+            background: #ffffff;
+            border: 2px solid #e0e0e0;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: #666;
+            font-size: 1rem;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .qr-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, #f0f0f0 25%, transparent 25%),
+                linear-gradient(-45deg, #f0f0f0 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, #f0f0f0 75%),
+                linear-gradient(-45deg, transparent 75%, #f0f0f0 75%);
+            background-size: 20px 20px;
+            background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+            opacity: 0.3;
+        }
+
+        .qr-placeholder-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .qr-info {
+            margin-top: 1.5rem;
+        }
+
+        .qr-info h3 {
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .qr-info p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .payment-methods {
+            margin: 2rem 0;
+        }
+
+        .payment-methods h3 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .payment-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .payment-icon {
+            width: 60px;
+            height: 60px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .payment-icon:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .upi-icon {
+            background: linear-gradient(45deg, #ff6b35, #ff8c42);
+            color: white;
+        }
+
+        .gpay-icon {
+            background: linear-gradient(45deg, #4285f4, #34a853);
+            color: white;
+        }
+
+        .phonepe-icon {
+            background: linear-gradient(45deg, #5f259f, #8b2cf5);
+            color: white;
+        }
+
+        .paytm-icon {
+            background: linear-gradient(45deg, #00baf2, #0082c6);
+            color: white;
+        }
+
+        .download-section {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .download-btn {
+            background: linear-gradient(45deg, #28a745, #20c997);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            margin: 0.5rem;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(40, 167, 69, 0.3);
+        }
+
+        .help-section {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border-left: 4px solid #2563eb;
+        }
+
+        .help-section h4 {
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .help-section p {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .help-contact {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .help-btn {
+            background: #25D366;
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .help-btn:hover {
+            background: #128C7E;
+            transform: translateY(-1px);
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 2rem 0;
+            text-align: center;
+            color: #666;
+            margin-top: auto;
+        }
+
+        .footer p {
+            margin: 0;
+        }
+
+        /* Animations */
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.7);
+            }
+
+            70% {
+                box-shadow: 0 0 0 10px rgba(37, 99, 235, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 99, 235, 0);
+            }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .payment-card {
+                padding: 2rem 1.5rem;
+                margin: 1rem;
+            }
+
+            .payment-header h1 {
+                font-size: 2rem;
+            }
+
+            .qr-placeholder {
+                width: 200px;
+                height: 200px;
+            }
+
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            .payment-icons {
+                gap: 0.5rem;
+            }
+
+            .payment-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+
+            .help-contact {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                📱 QRBiz
+            </a>
+            <a href="index.html" class="back-btn">
+                ← Back to Home
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Payment Section -->
+    <div class="payment-container">
+        <div class="payment-card">
+            <div class="payment-header">
+                <h1>💳 Make Payment</h1>
+                <p>Secure and instant payment for QRBiz services</p>
+            </div>
+
+            <div class="security-badge">
+                🔒 100% Secure Payment
+            </div>
+
+            <div class="qr-section">
+                <div class="qr-container pulse">
+                    <div class="qr-placeholder">
+                            <img src="images/payment.jpg" alt="QR Code"
+                                style="width: 100%; height: auto; border-radius: 10px;" />
+                        </div>
+                </div>
+
+                <div class="qr-info">
+                    <h3>📷 Scan to Pay</h3>
+                    <p>Point your camera at the QR code or use any UPI app to scan and pay instantly</p>
+                </div>
+            </div>
+
+            
+
+            <div class="download-section">
+                <h4>Can't scan? Download QR Code</h4>
+                <a href="#" class="download-btn" id="downloadBtn">
+                    📥 Download QR Code
+                </a>
+            </div>
+
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 QRBiz. All rights reserved. | Secure Payment Gateway</p>
+        </div>
+    </footer>
+
+    <script>
+  document.getElementById('downloadBtn').addEventListener('click', function (e) {
+    e.preventDefault();
+
+    const qrImage = document.querySelector('.qr-placeholder img');
+    if (qrImage) {
+      const link = document.createElement('a');
+      link.href = qrImage.src;
+      link.download = 'QRBiz_Payment_QR.jpg'; // You can change this filename
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      alert('QR Code downloaded successfully! 📥');
+    } else {
+      alert('QR Code image not found!');
+    }
+  });
+</script>
+
+</body>
+
+</html>
